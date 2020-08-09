@@ -15,22 +15,23 @@ TelegramNotifierBot реализует IDisposable.
 
 Интерфейс IDatabase объявляет 3 метода: IsExistUsername, AddUsername, GetChatId.
 
-Простой пример:
-	class Program
+Простой пример, использующий временное хранилище пользователей(SampleDatabase) и отправляющий уведомление указанному пользователю каждые 10 сек:
+
+```c#
+class Program
+{
+	static void Main(string[] args)
 	{
-		static void Main(string[] args)
+		TelegramNotifierBot bot = new TelegramNotifierBot("YOUR-BOT-API-TOKEN", new SampleDatabase());
+
+		int cnt = 0;
+
+		while (true)
 		{
-			TelegramNotifierBot bot = new TelegramNotifierBot("1364647734:AAFhug2kLz2A73MKteT3fH7-Wg9Z1qdmG1A", new SampleDatabase());
+			Thread.Sleep(10000);
 
-			Console.WriteLine("Write \"Exit\" for close.");
-
-			int cnt = 0;
-
-			while (true)
-			{
-				Thread.Sleep(10000);
-
-				bot.SendNotification("DezmontDeXa", "hello!(" + cnt++ + ")");
-			}
+			bot.SendNotification("SOME-USERNAME-WITHOUT-@", "hello!(" + cnt++ + ")");
 		}
 	}
+}
+```
