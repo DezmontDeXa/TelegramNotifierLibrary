@@ -1,0 +1,8 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/obj
+/bin
+/DezmontDeXa.TelegramNotifierBotLibrary.1.0.0.nupkg
+/TelegramNotifierLibrary.nuspec
